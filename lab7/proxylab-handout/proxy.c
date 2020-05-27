@@ -228,7 +228,7 @@ void writer(char *name, char *value)
     P(&w);
     strcpy(mycache.lines[mycache.next].name, name);
     strcpy(mycache.lines[mycache.next].value, value);
-    ++mycache.next;
+    mycache.next = (mycache.next + 1) % CACHE_LINE_NUM;
     V(&w);
 }
 void free_cache() 
